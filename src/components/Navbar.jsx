@@ -39,7 +39,9 @@ export default function Navbar() {
           <img
             src={logoImg}
             alt="G MOB - Mobiliario | Diseño | Espacios"
-            className="h-16 sm:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            className={`w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+              scrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
+            }`}
             onError={(e) => {
               // Fallback visual si la imagen aún no está en la carpeta assets
               e.target.style.display = 'none';

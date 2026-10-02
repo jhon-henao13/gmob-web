@@ -5,7 +5,7 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   // Reemplaza con tu número corporativo de WhatsApp
-  const whatsappNumber = "573000000000";
+  const whatsappNumber = "523332222490";
   const defaultMessage = encodeURIComponent("¡Hola G MOB! Vengo desde la página web y quiero asesoría para cotizar sillas ergonómicas y mobiliario.");
 
   return (

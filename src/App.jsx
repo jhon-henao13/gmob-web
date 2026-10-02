@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import WhyUs from './components/WhyUs';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 
@@ -9,6 +10,7 @@ export default function App() {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <WhyUs />
       </main>
       <Footer />
       <WhatsAppButton />
