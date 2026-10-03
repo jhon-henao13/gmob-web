@@ -16,7 +16,7 @@ import economallaFicha from '../assets/best-sellers/sillas/economalla-ficha.png'
 import ohi46Img from '../assets/best-sellers/sillas/ohi-46.png';
 import ohe195Img from '../assets/best-sellers/sillas/ohe-195.png';
 
-// Ejecutivas (Completas)
+// Ejecutivas
 import vantoImg from '../assets/best-sellers/ejecutivas/vanto.png';
 import vantoFicha from '../assets/best-sellers/ejecutivas/vanto-ficha.png';
 import goetzImg from '../assets/best-sellers/ejecutivas/goetz.png';
@@ -30,8 +30,7 @@ import netFicha from '../assets/best-sellers/ejecutivas/net-ficha.png';
 import khudiImg from '../assets/best-sellers/ejecutivas/khudi.png';
 import khudiFicha from '../assets/best-sellers/ejecutivas/khudi-ficha.png';
 
-
-// Bancos (Descomentar al guardar las imágenes en src/assets/best-sellers/bancos/)
+// Bancos
 import wayImg from '../assets/best-sellers/bancos/way.png';
 import wayFicha from '../assets/best-sellers/bancos/way-ficha.png';
 import arneImg from '../assets/best-sellers/bancos/arne.png';
@@ -45,8 +44,7 @@ import rueFicha from '../assets/best-sellers/bancos/rue-ficha.png';
 import alphaImg from '../assets/best-sellers/bancos/alpha.png';
 import alphaFicha from '../assets/best-sellers/bancos/alpha-ficha.png';
 
-
-// Exterior (Descomentar al guardar las imágenes en src/assets/best-sellers/exterior/)
+// Exterior
 import teksiImg from '../assets/best-sellers/exterior/teksi.png';
 import teksiFicha from '../assets/best-sellers/exterior/teksi-ficha.png';
 import kipaliImg from '../assets/best-sellers/exterior/kipali.png';
@@ -56,17 +54,25 @@ import sencillaExteriorFicha from '../assets/best-sellers/exterior/sencilla-fich
 import oceanImg from '../assets/best-sellers/exterior/ocean.png';
 import oceanFicha from '../assets/best-sellers/exterior/ocean-ficha.png';
 
+// Sillones
+import fabriziaohmImg from '../assets/best-sellers/sillones/fabriziaohm.png';
+import fabriziaohmFicha from '../assets/best-sellers/sillones/fabriziaohm-ficha.png';
+import isabelaohmImg from '../assets/best-sellers/sillones/isabelaohm.png';
 
-// Número corporativo (el mismo que usamos en el NavBar)
+// Escritorios
+import araohm17Img from '../assets/best-sellers/escritorios/araohm17.png';
+import dragonImg from '../assets/best-sellers/escritorios/dragon.png';
+
+// Número corporativo
 const WHATSAPP_NUMBER = "523332222490"; 
 
 export default function BestSellers() {
   const [activeCategory, setActiveCategory] = useState('Sillas');
+  const [hoveredFicha, setHoveredFicha] = useState(null);
 
   // Categorías del filtro
   const categories = ['Sillas', 'Ejecutivas', 'Bancos', 'Exterior', 'Sillones', 'Escritorios'];
 
-  // Base de datos de productos
   // Base de datos de productos
   const products = [
     // ------------------------------------------------------------------
@@ -173,9 +179,8 @@ export default function BestSellers() {
       ficha: khudiFicha,
     },
 
-    
     // ------------------------------------------------------------------
-    // CATEGORÍA: BANCOS (Descomentar al añadir las imágenes en src/assets/best-sellers/bancos/)
+    // CATEGORÍA: BANCOS
     // ------------------------------------------------------------------
     {
       id: 'banco-way',
@@ -226,9 +231,8 @@ export default function BestSellers() {
       ficha: alphaFicha,
     },
 
-    
     // ------------------------------------------------------------------
-    // CATEGORÍA: EXTERIOR (Descomentar al añadir las imágenes en src/assets/best-sellers/exterior/)
+    // CATEGORÍA: EXTERIOR
     // ------------------------------------------------------------------
     {
       id: 'exterior-teksi',
@@ -262,7 +266,46 @@ export default function BestSellers() {
       image: oceanImg,
       ficha: oceanFicha,
     },
-    
+
+    // ------------------------------------------------------------------
+    // CATEGORÍA: SILLONES
+    // ------------------------------------------------------------------
+    {
+      id: 'sillon-fabriziaohm',
+      category: 'Sillones',
+      name: 'FABRIZIA OHM',
+      price: '4,299.00',
+      image: fabriziaohmImg,
+      ficha: fabriziaohmFicha,
+    },
+    {
+      id: 'sillon-isabelaohm',
+      category: 'Sillones',
+      name: 'ISABELA OHM',
+      price: '3,899.00',
+      image: isabelaohmImg,
+      ficha: null,
+    },
+
+    // ------------------------------------------------------------------
+    // CATEGORÍA: ESCRITORIOS
+    // ------------------------------------------------------------------
+    {
+      id: 'escritorio-araohm17',
+      category: 'Escritorios',
+      name: 'ARA OHM 17',
+      price: '5,499.00',
+      image: araohm17Img,
+      ficha: null,
+    },
+    {
+      id: 'escritorio-dragon',
+      category: 'Escritorios',
+      name: 'DRAGON',
+      price: '6,299.00',
+      image: dragonImg,
+      ficha: null,
+    },
   ];
 
   // Filtramos los productos según la categoría activa
@@ -285,7 +328,7 @@ export default function BestSellers() {
         </div>
 
         {/* TABS / FILTROS ESTILO PILL */}
-        <div className="flex justify-center mb-4 overflow-x-auto pb-2 custom-scrollbar">
+        <div className="flex justify-center mb-8 overflow-x-auto pb-2 custom-scrollbar">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -320,7 +363,6 @@ export default function BestSellers() {
           <AnimatePresence mode="popLayout">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => {
-                // Generar mensaje de WhatsApp dinámico
                 const message = encodeURIComponent(`¡Hola G MOB! Vengo de la web y me gustaría recibir más información o cotizar el modelo ${product.name}.`);
                 const wpLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
@@ -335,37 +377,23 @@ export default function BestSellers() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
                     key={product.id}
-                    className="group bg-white rounded-3xl p-5 flex flex-col shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer"
+                    onMouseEnter={() => product.ficha && setHoveredFicha(product)}
+                    onMouseLeave={() => setHoveredFicha(null)}
+                    className="group bg-white rounded-3xl p-5 flex flex-col shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer relative"
                   >
-                    {/* CONTENEDOR DE IMAGEN (Efecto Crossfade Ficha) */}
-                    <div className="relative w-full h-72 sm:h-80 bg-gray-50 rounded-2xl overflow-hidden mb-5">
-                      
-                      {/* Imagen Principal */}
+                    {/* CONTENEDOR DE IMAGEN */}
+                    <div className="relative w-full h-72 sm:h-80 bg-gray-50 rounded-2xl overflow-hidden mb-5 flex items-center justify-center">
                       <img
                         src={product.image}
                         alt={`Silla ${product.name}`}
-                        className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-out z-10 ${
-                          product.ficha ? 'group-hover:opacity-0' : 'group-hover:scale-110'
-                        }`}
+                        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />
 
-                      {/* Imagen Ficha Técnica (Aparece en Hover) */}
+                      {/* BADGE DE FICHA TÉCNICA (INDICADOR DE ZOOM) */}
                       {product.ficha && (
-                        <div className="absolute inset-0 bg-white z-0 flex items-center justify-center p-2">
-                           <img
-                            src={product.ficha}
-                            alt={`Ficha Técnica ${product.name}`}
-                            className="w-full h-full object-contain opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-out delay-75"
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                          />
-                        </div>
-                      )}
-                      
-                      {/* Overlay sutil instruccional (opcional) */}
-                      {product.ficha && (
-                        <div className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm text-[10px] uppercase tracking-wider font-bold text-gray-500 px-2 py-1 rounded shadow-sm opacity-100 group-hover:opacity-0 transition-opacity z-20">
-                          Ver ficha
+                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[10px] uppercase tracking-wider font-bold text-gray-700 px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 z-20">
+                          <span>🔍</span> Ver Ficha
                         </div>
                       )}
                     </div>
@@ -373,7 +401,7 @@ export default function BestSellers() {
                     {/* DETALLES DEL PRODUCTO */}
                     <div className="flex justify-between items-end mt-auto">
                       <div>
-                        <h3 className="text-lg font-bold font-montserrat text-black tracking-wide group-hover:text-gmob-red transition-colors font-medium">
+                        <h3 className="text-lg font-bold font-montserrat text-black tracking-wide group-hover:text-gmob-red transition-colors">
                           {product.name}
                         </h3>
                         <div className="flex items-baseline space-x-2 mt-1">
@@ -411,6 +439,39 @@ export default function BestSellers() {
         </motion.div>
 
       </div>
+
+      {/* MODAL / VISTA PREVIA FULLSCREEN EN HOVER */}
+      <AnimatePresence>
+        {hoveredFicha && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 sm:p-8 pointer-events-none"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
+              className="relative max-w-5xl max-h-[185vh] bg-white/95 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center justify-center overflow-hidden"
+            >
+              <div className="absolute top-4 right-4 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+                Ficha Técnica
+              </div>
+              <img
+                src={hoveredFicha.ficha}
+                alt={`Ficha Técnica ${hoveredFicha.name}`}
+                className="max-h-[80vh] w-auto object-contain rounded-xl shadow-md"
+              />
+              <h4 className="mt-4 text-base font-bold font-montserrat text-gray-900 tracking-wide uppercase">
+                {hoveredFicha.name}
+              </h4>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
