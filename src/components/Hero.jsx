@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 // Importación de la imagen de fondo requerida
-import bgHero from '../assets/background-hero.png';
+import bgHero from '../assets/background-hero.jpg';
 import offihoBlackImg from '../assets/offiho-black.png';
 import offihoItalyImg from '../assets/offiho-italy.png';
 
@@ -33,15 +33,14 @@ export default function Hero() {
         <img
           src={bgHero}
           alt="G MOB Studio Sillas Ergonomicas"
-          className="w-full h-full object-cover object-center md:object-right"
+          className="w-full h-full object-cover object-top md:object-right"
           onError={(e) => {
             // Fallback visual si la imagen de fondo aún no se encuentra
             e.target.style.display = 'none';
           }}
         />
         {/* Overlay suave para legibilidad responsive en pantallas pequeñas */}
-        {/* Overlay combinando gradiente negro en la izquierda central y blanco superior */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/10 to-transparent w-full md:w-3/5 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 md:from-black/10 md:via-black/10 to-transparent w-full md:w-3/5 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-transparent pointer-events-none" />
 
       </div>
@@ -110,7 +109,7 @@ export default function Hero() {
             {/* BADGES O GARANTÍAS ADICIONALES */}
             <motion.div
               variants={itemVariants}
-              className="pt-4 flex items-center space-x-6 text-xs sm:text-sm text-gray-500 font-medium"
+              className="pt-4 flex items-center space-x-6 text-xs sm:text-sm text-white drop-shadow-md sm:text-black sm:drop-shadow-none font-medium"
             >
               <div className="flex items-center space-x-2">
                 <svg className="w-5 h-5 text-gmob-red" fill="currentColor" viewBox="0 0 20 20">
