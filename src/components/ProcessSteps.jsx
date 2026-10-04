@@ -47,7 +47,7 @@ export default function ProcessSteps() {
   ];
 
   return (
-    <section className="py-28 sm:py-32 bg-gradient-to-b from-white via-white to-[#d12a2a]/15 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-white via-white to-[#d12a2a]/15 relative overflow-hidden">
       {/* Luces/Glows decorativos de fondo */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-gmob-red/5 via-transparent to-transparent blur-3xl pointer-events-none -z-10" />
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-gmob-red/5 blur-3xl rounded-full pointer-events-none -z-10" />
@@ -57,7 +57,7 @@ export default function ProcessSteps() {
         {/* ==================================================================== */}
         {/* HEADER DE LA SECCIÓN                                                 */}
         {/* ==================================================================== */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-24">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-24">
           {/* Tag superior */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
