@@ -6,6 +6,7 @@ import ProjectSolutions from './components/ProjectSolutions';
 import RestaurantSolutions from './components/RestaurantSolutions';
 import OutdoorSolutions from './components/OutdoorSolutions';
 import ProcessSteps from './components/ProcessSteps';
+import LeySillaSection from './components/LeySillaSection';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 
@@ -21,6 +22,7 @@ export default function App() {
         <RestaurantSolutions />
         <OutdoorSolutions />
         <ProcessSteps />
+        <LeySillaSection />
       </main>
       <Footer />
       <WhatsAppButton />

@@ -54,9 +54,7 @@ export default function ProcessSteps() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* ==================================================================== */}
-        {/* HEADER DE LA SECCIÓN                                                 */}
-        {/* ==================================================================== */}
+        {/* HEADER */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-24">
           {/* Tag superior */}
           <motion.div
