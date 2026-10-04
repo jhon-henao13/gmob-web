@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import WhyUs from './components/WhyUs';
 import BestSellers from './components/BestSellers';
 import ProjectSolutions from './components/ProjectSolutions';
+import RestaurantSolutions from './components/RestaurantSolutions';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 
@@ -15,6 +16,7 @@ export default function App() {
         <WhyUs />
         <BestSellers />
         <ProjectSolutions />
+        <RestaurantSolutions />
       </main>
       <Footer />
       <WhatsAppButton />
