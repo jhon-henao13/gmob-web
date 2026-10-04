@@ -5,6 +5,7 @@ import BestSellers from './components/BestSellers';
 import ProjectSolutions from './components/ProjectSolutions';
 import RestaurantSolutions from './components/RestaurantSolutions';
 import OutdoorSolutions from './components/OutdoorSolutions';
+import ProcessSteps from './components/ProcessSteps';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 
@@ -19,6 +20,7 @@ export default function App() {
         <ProjectSolutions />
         <RestaurantSolutions />
         <OutdoorSolutions />
+        <ProcessSteps />
       </main>
       <Footer />
       <WhatsAppButton />
