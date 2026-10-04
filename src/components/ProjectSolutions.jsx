@@ -29,7 +29,7 @@ export default function ProjectSolutions() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+    <section className="py-28 sm:py-32 bg-white relative overflow-hidden">
       {/* Elemento Decorativo de Fondo */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-red-500/5 blur-3xl rounded-full pointer-events-none -z-10" />
 
@@ -85,7 +85,7 @@ export default function ProjectSolutions() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex flex-col justify-center"
+            className="lg:col-span-6 flex flex-col justify-center lg:-mt-32"
           >
             {/* Título Principal */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-spartan text-black tracking-tight leading-[1.15] mb-8">
