@@ -8,10 +8,10 @@ export default function WhyUs() {
       title: 'Showroom',
       description:
         'Agenda tu cita para probar la ergonomía antes de comprar. Prestamos muestras para pruebas en tu empresa.',
-      // Icono estilo Line-Art de Edificio / Showroom (Tamaño grande)
+      // Icono estilo Line-Art de Edificio / Showroom (Tamaño optimizado responsive)
       icon: (
         <svg
-          className="w-16 h-16 sm:w-20 sm:h-20 text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[0.7]"
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-gray-400 sm:text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[1] sm:stroke-[0.7]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -29,10 +29,10 @@ export default function WhyUs() {
       title: 'Garantía',
       description:
         '5 años en Offiho, 10 años en Offiho Black. Con taller y refacciones locales en la ZMG.',
-      // Icono estilo Escudo con Checkmark (Tamaño grande)
+      // Icono estilo Escudo con Checkmark (Tamaño optimizado responsive)
       icon: (
         <svg
-          className="w-16 h-16 sm:w-20 sm:h-20 text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[0.7]"
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-gray-400 sm:text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[1] sm:stroke-[0.7]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -50,10 +50,10 @@ export default function WhyUs() {
       title: 'Entrega-Armado',
       description:
         'Stock disponible para entrega en 3 a 5 días. En la ZMG, entrega el mueble armado y listo para usar.',
-      // Icono estilo Camión de Logística / Entrega (Tamaño grande)
+      // Icono estilo Camión de Logística / Entrega (Tamaño optimizado responsive)
       icon: (
         <svg
-          className="w-16 h-16 sm:w-20 sm:h-20 text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[0.7]"
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-gray-400 sm:text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[1] sm:stroke-[0.7]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -71,10 +71,10 @@ export default function WhyUs() {
       title: 'Certificaciones',
       description:
         'Normativas BIFMA, ANSI, ISO y protección UV para exteriores que garantizan una inversión a largo plazo.',
-      // Icono estilo Estrella de Certificación y Calidad (Tamaño grande)
+      // Icono estilo Estrella de Certificación y Calidad (Tamaño optimizado responsive)
       icon: (
         <svg
-          className="w-16 h-16 sm:w-20 sm:h-20 text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[0.7]"
+          className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 text-gray-400 sm:text-gray-500 group-hover:text-gmob-red transition-colors duration-300 stroke-[1] sm:stroke-[0.7]"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -119,7 +119,7 @@ export default function WhyUs() {
   };
 
   return (
-    <section id="nosotros" className="py-20 sm:py-28 bg-white border-y border-gray-100 overflow-hidden relative">
+    <section id="nosotros" className="py-16 sm:py-28 bg-white border-y border-gray-100 overflow-hidden relative">
       {/* Sutil brillo de fondo decorativo */}
       <div className="absolute top-1/2 -left-20 w-72 h-72 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -129,12 +129,12 @@ export default function WhyUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-center"
         >
           
           {/* COLUMNA IZQUIERDA: TITULAR */}
-          <motion.div variants={titleVariants} className="lg:col-span-5">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold  text-black !leading-[1.2] font-montserrat tracking-tight">
+          <motion.div variants={titleVariants} className="lg:col-span-5 text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black !leading-[1.2] font-montserrat tracking-tight">
               ¿Por qué las <br className="hidden sm:inline" />
               empresas eligen <br className="hidden sm:inline" />
               <span className="text-black relative inline-block font-extrabold">
@@ -144,28 +144,35 @@ export default function WhyUs() {
             </h2>
           </motion.div>
 
-          {/* COLUMNA DERECHA: DISEÑO LIBRE */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+          {/* COLUMNA DERECHA: CARDS Y POSICIONAMIENTO RESPONSIVE */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-x-8 sm:gap-y-12">
             {features.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
-                className="group relative flex flex-col justify-between pt-2 pb-2 min-h-[170px]"
+                className="group relative flex flex-col sm:justify-between pt-2 pb-2 sm:min-h-[170px] bg-gray-50/50 sm:bg-transparent p-6 sm:p-0 rounded-2xl sm:rounded-none border border-gray-100 sm:border-none shadow-sm sm:shadow-none"
               >
-                {/* BLOQUE SUPERIOR: TÍTULO Y DESCRIPCIÓN (Desplazado a la derecha con pl-6 o pl-8) */}
-                <div className="pl-6 sm:pl-8">
+                {/* 
+                  ESTRUCTURA HÍBRIDA RESPONSIVE:
+                  - En Mobile (< 640px): El icono va arriba, seguido del título y párrafo en flujo normal (flex-col).
+                  - En Desktop (sm: en adelante): Mantiene tu diseño libre absoluto con pl-8 en el texto y el icono flotando abajo a la izquierda.
+                */}
+                
+                {/* ICONO (Arriba en Mobile / Posicionado absoluto abajo en Desktop) */}
+                <div className="mb-4 sm:mb-0 sm:absolute sm:-left-6 lg:sm:-left-10 sm:bottom-[-20px] flex items-end z-10 pointer-events-none">
+                  {item.icon}
+                </div>
+
+                {/* BLOQUE DE TÍTULO Y DESCRIPCIÓN */}
+                <div className="sm:pl-8">
                   <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-black tracking-tight group-hover:text-gmob-red transition-colors duration-200 mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 font-sans text-sm sm:text-base leading-relaxed pr-2">
+                  <p className="text-gray-600 font-sans text-sm sm:text-base leading-relaxed sm:pr-2">
                     {item.description}
                   </p>
                 </div>
 
-                {/* BLOQUE INFERIOR IZQUIERDA: ICONO GRANDE (Posicionado libremente más a la izquierda y más arriba) */}
-                <div className="absolute -left-3 sm:-left-10 bottom-[-10px] sm:bottom-[-20px] flex items-end z-10 pointer-events-none">
-                  {item.icon}
-                </div>
               </motion.div>
             ))}
           </div>
