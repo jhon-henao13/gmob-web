@@ -1,9 +1,5 @@
 import { motion } from 'framer-motion';
-
-// Importación de las 3 sillas desde la carpeta de assets best-sellers
-import ecochairImg from '../assets/best-sellers/sillas/ecochair.png';
-import cantabriaImg from '../assets/best-sellers/sillas/cantabria.png';
-import ecogerencialImg from '../assets/best-sellers/sillas/ecogerencial.png';
+import bannerSillasImg from '../assets/3sillas-ctabanner.png';
 
 const WHATSAPP_NUMBER = "523332222490";
 
@@ -14,38 +10,7 @@ export default function BannerCtaSillas() {
   const wpLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
   // Data de las 3 sillas a mostrar en la composición derecha
-  const sillas = [
-    {
-      id: "ecochair",
-      nombre: "Ecochair",
-      tag: "Ergonómica Malla",
-      img: ecochairImg,
-      badgeColor: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-      delay: 0.2,
-      scale: "scale-95 lg:scale-105",
-      zIndex: "z-20",
-    },
-    {
-      id: "ecogerencial",
-      nombre: "Eco Gerencial",
-      tag: "Top Ventas",
-      img: ecogerencialImg,
-      badgeColor: "bg-gmob-red/20 text-red-400 border-gmob-red/30",
-      delay: 0.35,
-      scale: "scale-100 lg:scale-110",
-      zIndex: "z-30", // Destacada al centro
-    },
-    {
-      id: "cantabria",
-      nombre: "Cantabria",
-      tag: "Alta Gama",
-      img: cantabriaImg,
-      badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-      delay: 0.5,
-      scale: "scale-95 lg:scale-105",
-      zIndex: "z-10",
-    },
-  ];
+  
 
   return (
     <section className="py-8 sm:py-10 px-2 sm:px-4 lg:px-6 max-w-7xl mx-auto overflow-hidden">
@@ -70,22 +35,19 @@ export default function BannerCtaSillas() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 p-8 sm:p-12 lg:p-14 flex flex-col justify-center items-start text-left"
+            className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-center items-start text-left"
           >
             
 
             {/* Título Principal Tipografía Spartan/Montserrat de GMOB */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-spartan text-white tracking-tight !leading-[1.1] mb-4">
-              ¿LISTO PARA EQUIPAR TU EMPRESA CON{" "}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-spartan text-white tracking-tight !leading-[1.3] mb-12">
+              EQUIPEMOS TU OFICINA O NEGOCIO {" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-gmob-red to-red-500">
-                SILLAS DE ALTA GAMA?
+                HOY MISMO
               </span>
             </h2>
 
-            {/* Subtítulo informativo */}
-            <p className="text-sm sm:text-base text-gray-300 font-sans leading-relaxed mb-8 max-w-lg">
-              Cotiza, confirma tus modelos ergonómicos ideales y asegura la salud e higiene postural de tu equipo hoy mismo.
-            </p>
+            
 
             {/* Botón CTA con animación Hover */}
             <motion.a
@@ -94,9 +56,9 @@ export default function BannerCtaSillas() {
               href={wpLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-gmob-red to-red-700 text-white font-montserrat font-bold text-base tracking-wide shadow-red-glow hover:shadow-red-600/50 transition-all duration-300"
+              className="group inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-gmob-red to-red-700 text-white font-montserrat font-extrabold text-lg tracking-wide shadow-red-glow hover:shadow-red-600/50 transition-all duration-300"
             >
-              <span>Aparta tu cotización</span>
+              <span>Cotiza ahora</span>
               <svg 
                 className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
                 fill="none" 
@@ -110,45 +72,22 @@ export default function BannerCtaSillas() {
 
 
           {/* COLUMNA DERECHA: */}
-          <div className="lg:col-span-6 h-full min-h-[320px] sm:min-h-[380px] lg:min-h-full relative flex items-center justify-center p-6 lg:p-0">
+          <div className="lg:col-span-5 h-full min-h-[320px] sm:min-h-[380px] lg:min-h-full relative flex items-center justify-center p-6 lg:p-8">
             
-            {/* Luces flotantes detrás de las sillas */}
+            {/* Luces flotantes detrás de la imagen */}
             <div className="absolute w-72 h-72 bg-gmob-red/30 rounded-full blur-3xl pointer-events-none" />
 
-            {/* Grid/Composición de las 3 Sillas */}
-            <div className="relative w-full max-w-lg flex items-center justify-center gap-4 sm:gap-6 py-6">
-              {sillas.map((silla) => (
-                <motion.div
-                  key={silla.id}
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: silla.delay }}
-                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
-                  className={`relative flex-1 flex flex-col items-center group cursor-pointer ${silla.zIndex}`}
-                >
-                  {/* Tarjeta Glassmorphism para cada silla */}
-                  <div className={`w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-2 sm:p-3 flex flex-col items-center transition-all duration-300 group-hover:bg-white/10 group-hover:border-gmob-red/50 group-hover:shadow-red-glow/30 ${silla.scale}`}>
-                    
-                    
-                    
-
-                    {/* Contenedor e Imagen de la Silla */}
-                    <div className="relative w-28 h-32 sm:w-36 sm:h-44 flex items-center justify-center my-1">
-                      <img
-                        src={silla.img}
-                        alt={`Modelo ${silla.nombre} G MOB`}
-                        className="max-w-full max-h-full object-contain rounded-xl filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-
-                    {/* Nombre de la Silla */}
-                    <h3 className="text-xs sm:text-sm font-bold text-white font-montserrat text-center tracking-wide group-hover:text-red-400 transition-colors">
-                      {silla.nombre}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Imagen Única de las 3 Sillas */}
+            <div className="relative w-full max-w-lg flex items-center justify-center py-4">
+              <motion.img
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                src={bannerSillasImg}
+                alt="Modelos de sillas ergonómicas G MOB"
+                className="w-full h-auto object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.6)]"
+              />
             </div>
 
           </div>
