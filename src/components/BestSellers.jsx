@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // ----------------------------------------------------------------------
 // Sillas
 import cantabriaImg from '../assets/best-sellers/sillas/cantabria.png';
-import cantabriaFicha from '../assets/best-sellers/sillas/cantabria-ficha.png';
+import cantabriaFicha from '../assets/best-sellers/sillas/cantabria-ficha.jpg';
 import ecochairImg from '../assets/best-sellers/sillas/ecochair.png';
 import ecochairFicha from '../assets/best-sellers/sillas/ecochair-ficha.png';
 import ecogerencialImg from '../assets/best-sellers/sillas/ecogerencial.png';
