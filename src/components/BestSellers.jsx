@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // ----------------------------------------------------------------------
@@ -67,8 +67,15 @@ import dragonImg from '../assets/best-sellers/escritorios/dragon.png';
 const WHATSAPP_NUMBER = "523332222490"; 
 
 export default function BestSellers() {
-  const [activeCategory, setActiveCategory] = useState('Sillas');
-  const [hoveredFicha, setHoveredFicha] = useState(null);
+    const [activeCategory, setActiveCategory] = useState('Sillas');
+    const [activeFicha, setActiveFicha] = useState(null);
+
+    // Cerrar el visor con la tecla ESC
+    useEffect(() => {
+      const onKey = (e) => e.key === 'Escape' && setActiveFicha(null);
+      window.addEventListener('keydown', onKey);
+      return () => window.removeEventListener('keydown', onKey);
+    }, []);
 
   // Categorías del filtro
   const categories = ['Sillas', 'Ejecutivas', 'Bancos', 'Exterior', 'Sillones', 'Escritorios'];
@@ -378,9 +385,8 @@ export default function BestSellers() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
+                    
                     key={product.id}
-                    onMouseEnter={() => product.ficha && setHoveredFicha(product)}
-                    onMouseLeave={() => setHoveredFicha(null)}
                     className="group bg-white rounded-3xl p-5 flex flex-col shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer relative shrink-0 snap-start w-[78vw] sm:w-[55vw] md:w-[42vw] lg:w-auto"
                   >
 
@@ -393,12 +399,22 @@ export default function BestSellers() {
                         onError={(e) => { e.target.style.display = 'none'; }}
                       />
 
-                      {/* BADGE DE FICHA TÉCNICA (INDICADOR DE ZOOM) */}
+                      {/* BOTÓN: VER FICHA TÉCNICA (abre visor fullscreen) */}
                       {product.ficha && (
-                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[10px] uppercase tracking-wider font-bold text-gray-700 px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 z-20">
+                        <button
+                          type="button"
+                          aria-label={`Ver ficha técnica de ${product.name}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setActiveFicha(product);
+                          }}
+                          className="absolute top-3 left-3 z-20 bg-white/95 backdrop-blur-md text-[10px] uppercase tracking-wider font-bold text-gray-700 px-3 py-1.5 rounded-full shadow-md flex items-center gap-1 hover:bg-red-600 hover:text-white hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                        >
                           <span>🔍</span> Ver Ficha
-                        </div>
+                        </button>
                       )}
+                      
                     </div>
 
                     {/* DETALLES DEL PRODUCTO */}
@@ -443,38 +459,63 @@ export default function BestSellers() {
 
       </div>
 
-      {/* MODAL / VISTA PREVIA FULLSCREEN EN HOVER */}
+      {/* VISOR FULLSCREEN DE FICHA TÉCNICA (click en "Ver Ficha") */}
       <AnimatePresence>
-        {hoveredFicha && (
+        {activeFicha && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 sm:p-8 pointer-events-none"
+            onClick={() => setActiveFicha(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-md p-4 sm:p-8"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              initial={{ scale: 0.85, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 20 }}
-              transition={{ type: "spring", stiffness: 350, damping: 25 }}
-              className="relative max-w-5xl max-h-[185vh] bg-white/95 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center justify-center overflow-hidden"
+              exit={{ scale: 0.85, opacity: 0, y: 20 }}
+              transition={{ type: "spring", stiffness: 350, damping: 28 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-5xl max-h-[92vh] bg-white rounded-3xl shadow-2xl border border-white/20 flex flex-col items-center justify-center overflow-hidden"
             >
-              <div className="absolute top-4 right-4 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              {/* BOTÓN CERRAR (X) */}
+              <button
+                type="button"
+                aria-label="Cerrar ficha técnica"
+                onClick={() => setActiveFicha(null)}
+                className="absolute top-3 right-3 z-20 bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+
+              {/* ETIQUETA */}
+              <div className="absolute top-4 left-4 bg-black/70 text-white text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow z-10">
                 Ficha Técnica
               </div>
-              <img
-                src={hoveredFicha.ficha}
-                alt={`Ficha Técnica ${hoveredFicha.name}`}
-                className="max-h-[80vh] w-auto object-contain rounded-xl shadow-md"
-              />
-              <h4 className="mt-4 text-base font-bold font-montserrat text-gray-900 tracking-wide uppercase">
-                {hoveredFicha.name}
+
+              {/* IMAGEN FULLSCREEN */}
+              <div className="w-full h-full flex items-center justify-center p-4 sm:p-8 overflow-auto custom-scrollbar">
+                <img
+                  src={activeFicha.ficha}
+                  alt={`Ficha Técnica ${activeFicha.name}`}
+                  className="max-w-full max-h-[80vh] w-auto h-auto object-contain rounded-xl shadow-md select-none"
+                  draggable={false}
+                />
+              </div>
+
+              {/* NOMBRE */}
+              <h4 className="pb-4 text-base font-bold font-montserrat text-gray-900 tracking-wide uppercase text-center px-4">
+                {activeFicha.name}
               </h4>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+
     </section>
   );
 }
