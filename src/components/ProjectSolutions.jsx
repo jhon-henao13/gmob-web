@@ -97,7 +97,7 @@ export default function ProjectSolutions() {
 
             {/* Subtítulo Categoría */}
             <div className="inline-flex items-center justify-center gap-2 mb-8">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
+              
               <h3 className="text-xl sm:text-2xl font-bold font-montserrat text-gray-900 tracking-wide">
                 Mobiliario de Oficina
               </h3>

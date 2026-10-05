@@ -28,7 +28,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-between md:justify-center pt-20 pb-8 sm:pb-12 overflow-hidden bg-[#EFEFEF]">
+    <section className="relative min-h-screen flex flex-col justify-between md:justify-center pt-24 pb-8 sm:pb-12 overflow-hidden bg-[#EFEFEF]">
       {/* BACKGROUND IMAGE CAPA FULL */}
       <div className="absolute inset-0 z-0">
         <img
@@ -139,7 +139,7 @@ export default function Hero() {
       </div>
 
       {/* DUAL CTA BUTTONS EXCLUSIVOS PARA MOBILE (Ubicados en la parte más baja de la sección) */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full block md:hidden pt-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full block md:hidden pt-4 pb-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

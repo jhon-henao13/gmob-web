@@ -359,19 +359,21 @@ export default function BestSellers() {
         </div>
 
         {/* GRID DE PRODUCTOS */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* GRID / CARRUSEL DE PRODUCTOS */}
+        <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth pb-6 lg:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 custom-scrollbar">
           <AnimatePresence mode="popLayout">
+            
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => {
                 const message = encodeURIComponent(`¡Hola G MOB! Vengo de la web y me gustaría recibir más información o cotizar el modelo ${product.name}.`);
                 const wpLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
                 return (
+                  
                   <motion.a
                     href={wpLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    layout
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
@@ -379,8 +381,9 @@ export default function BestSellers() {
                     key={product.id}
                     onMouseEnter={() => product.ficha && setHoveredFicha(product)}
                     onMouseLeave={() => setHoveredFicha(null)}
-                    className="group bg-white rounded-3xl p-5 flex flex-col shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer relative"
+                    className="group bg-white rounded-3xl p-5 flex flex-col shadow-sm border border-gray-100 hover:shadow-2xl hover:border-transparent transition-all duration-300 cursor-pointer relative shrink-0 snap-start w-[78vw] sm:w-[55vw] md:w-[42vw] lg:w-auto"
                   >
+
                     {/* CONTENEDOR DE IMAGEN */}
                     <div className="relative w-full h-72 sm:h-80 bg-gray-50 rounded-2xl overflow-hidden mb-5 flex items-center justify-center">
                       <img
@@ -428,7 +431,7 @@ export default function BestSellers() {
               <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                className="col-span-full text-center py-20"
+                className="w-full text-center py-20"
               >
                 <p className="text-gray-500 font-sans text-lg">
                   Próximamente agregaremos modelos a esta categoría.
@@ -436,7 +439,7 @@ export default function BestSellers() {
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
       </div>
 
