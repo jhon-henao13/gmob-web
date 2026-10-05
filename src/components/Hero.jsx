@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 
 // Importación de la imagen de fondo requerida
 import bgHero from '../assets/background-hero.jpg';
+import bgHeroMobile from '../assets/background-hero-mobile.jpg';
 import offihoBlackImg from '../assets/offiho-black.png';
 import offihoItalyImg from '../assets/offiho-italy.png';
 
@@ -27,37 +28,43 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-[#EFEFEF]">
+    <section className="relative min-h-screen flex flex-col justify-between md:justify-center pt-20 pb-8 sm:pb-12 overflow-hidden bg-[#EFEFEF]">
       {/* BACKGROUND IMAGE CAPA FULL */}
       <div className="absolute inset-0 z-0">
         <img
-          src={bgHero}
-          alt="G MOB Studio Sillas Ergonomicas"
-          className="w-full h-full object-cover object-top md:object-right"
+          src={bgHeroMobile}
+          alt="G MOB Studio Sillas Ergonomicas Mobile"
+          className="md:hidden w-full h-full object-cover object-center"
           onError={(e) => {
-            // Fallback visual si la imagen de fondo aún no se encuentra
             e.target.style.display = 'none';
           }}
         />
-        {/* Overlay suave para legibilidad responsive en pantallas pequeñas */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 md:from-black/10 md:via-black/10 to-transparent w-full md:w-3/5 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-transparent pointer-events-none" />
-
+        {/* Imagen para desktop */}
+        <img
+          src={bgHero}
+          alt="G MOB Studio Sillas Ergonomicas"
+          className="hidden md:block w-full h-full object-cover object-right"
+          onError={(e) => {
+            e.target.style.display = 'none';
+          }}
+        />
+        {/* Sutil gradiente o sombra blanca de arriba hacia abajo transparente */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/10 to-transparent pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* COLUMNA IZQUIERDA:*/}
+          {/* COLUMNA IZQUIERDA: TEXTOS */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 xl:col-span-6 space-y-6 max-w-2xl"
+            className="lg:col-span-7 xl:col-span-6 space-y-4 max-w-2xl"
           >
             {/* CATEGORÍA/TAGLINE */}
             <motion.div variants={itemVariants} className="inline-block">
-              <span className="text-gray-700 font-medium uppercase !tracking-widest text-base sm:text-lg font-sans border-b-2 border-gmob-red pb-1">
+              <span className="hidden md:inline-block text-gray-700 font-medium uppercase !tracking-widest text-base sm:text-lg font-sans border-b-2 border-gmob-red pb-1">
                 MOBILIARIO | NEGOCIOS
               </span>
             </motion.div>
@@ -65,7 +72,7 @@ export default function Hero() {
             {/* TITULAR PRINCIPAL EN MONTSERRAT */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl sm:text-6xl md:text-7xl font-bold text-black !leading-[0.9] font-spartan !tracking-normal"
+              className="text-5xl sm:text-6xl md:text-7xl font-bold text-black !leading-[0.9] font-spartan !tracking-normal !mt-0"
             >
               La nueva forma <br className="hidden sm:inline" />
               de trabajar
@@ -74,16 +81,16 @@ export default function Hero() {
             {/* PARÁGRAFO Y BENEFICIOS */}
             <motion.p
               variants={itemVariants}
-              className="text-gray-800 text-lg sm:text-xl !leading-snug font-sans max-w-lg font-normal"
+              className="text-gray-800 text-base sm:text-xl !leading-snug font-sans max-w-lg font-normal"
             >
               La mayor durabilidad y confort al precio más accesible del mercado.
               Precios especiales por volumen y entrega inmediata en la ZMG.
             </motion.p>
 
-            {/* DUAL CTA BUTTONS */}
+            {/* DUAL CTA BUTTONS (SOLO DESKTOP - En mobile se mueven abajo del todo) */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1"
+              className="hidden md:flex flex-row justify-start items-center gap-3 sm:gap-4 pt-2 w-full"
             >
               <motion.a
                 href="https://wa.me/573000000000?text=Hola,%20deseo%20una%20cotización%20personalizada"
@@ -105,30 +112,10 @@ export default function Hero() {
                 Descargar Catálogo
               </motion.a>
             </motion.div>
-
-            {/* BADGES O GARANTÍAS ADICIONALES */}
-            <motion.div
-              variants={itemVariants}
-              className="pt-4 flex items-center space-x-6 text-xs sm:text-sm text-white drop-shadow-md sm:text-black sm:drop-shadow-none font-medium"
-            >
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-gmob-red" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Garantía de Fábrica</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-gmob-red" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Envíos Inmediatos</span>
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* COLUMNA DERECHA: LOGOS FLOTANTES DE MARCA (OFFIHO) */}
-          <div className="lg:col-span-5 xl:col-span-6 relative min-h-[300px] lg:min-h-[500px] pointer-events-none">
-            {/* Insignias de marcas con las imágenes importadas */}
+          {/* COLUMNA DERECHA: LOGOS FLOTANTES DE MARCA (OFFIHO - OCULTO EN MOBILE) */}
+          <div className="hidden md:block lg:col-span-5 xl:col-span-6 relative min-h-[300px] lg:min-h-[500px] pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -143,12 +130,38 @@ export default function Hero() {
               <img
                 src={offihoItalyImg}
                 alt="Offiho Italy"
-                className="h-14 sm:h-16 w-auto object-contain drop-shadow-lg  translate-x-10"
+                className="h-14 sm:h-16 w-auto object-contain drop-shadow-lg translate-x-10"
               />
             </motion.div>
           </div>
 
         </div>
+      </div>
+
+      {/* DUAL CTA BUTTONS EXCLUSIVOS PARA MOBILE (Ubicados en la parte más baja de la sección) */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full block md:hidden pt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-row justify-center items-center gap-3 w-full"
+        >
+          <a
+            href="https://wa.me/573000000000?text=Hola,%20deseo%20una%20cotización%20personalizada"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gmob-red text-white font-extrabold px-4 py-3.5 rounded-lg text-center shadow-lg transition-all font-montserrat text-sm tracking-wide flex-1"
+          >
+            Cotizar Ahora
+          </a>
+
+          <a
+            href="#catalogo"
+            className="bg-[#6e6c69] text-white font-extrabold px-4 py-3.5 rounded-lg text-center shadow-md transition-all font-montserrat text-sm tracking-wide flex-1"
+          >
+            Descargar Catálogo
+          </a>
+        </motion.div>
       </div>
     </section>
   );

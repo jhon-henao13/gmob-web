@@ -40,7 +40,7 @@ export default function Navbar() {
             src={logoImg}
             alt="G MOB - Mobiliario | Diseño | Espacios"
             className={`w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-              scrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-20'
+              scrolled ? 'h-12 sm:h-14' : 'h-14 sm:h-16'
             }`}
             onError={(e) => {
               // Fallback visual si la imagen aún no está en la carpeta assets
@@ -84,18 +84,32 @@ export default function Navbar() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-800 hover:text-gmob-red focus:outline-none p-2"
+            className="text-gray-900 hover:text-gmob-red focus:outline-none p-2"
             aria-label="Abrir Menú"
           >
-            <svg className="w-7 h-7 fill-current" viewBox="0 0 24 24">
+            <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24">
               {isOpen ? (
-                <path fillRule="evenodd" clipRule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z" />
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="3"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path fillRule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z" />
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="3"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </div>
+
+
       </div>
 
       {/* MOBILE DRAWER */}
