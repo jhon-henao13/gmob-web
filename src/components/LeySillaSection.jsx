@@ -57,9 +57,7 @@ export default function LeySillaSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
             
-            {/* ==================================================================== */}
-            {/* LADO IZQUIERDO: Pregunta Central e Ilustración / Badge SVG             */}
-            {/* ==================================================================== */}
+            {/* LADO IZQUIERDO: */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -104,9 +102,7 @@ export default function LeySillaSection() {
               </div>
             </motion.div>
 
-            {/* ==================================================================== */}
-            {/* LADO DERECHO: Réplica Mejorada GMOB (Texto, Cards & CTA)            */}
-            {/* ==================================================================== */}
+            {/* LADO DERECHO: */}
             <motion.div 
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
