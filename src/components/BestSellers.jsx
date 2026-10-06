@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// ----------------------------------------------------------------------
+
 // IMPORTACIÓN DE ASSETS (Imágenes y Fichas Técnicas)
-// ----------------------------------------------------------------------
 // Sillas
 import cantabriaImg from '../assets/best-sellers/sillas/cantabria.png';
 import cantabriaFicha from '../assets/best-sellers/sillas/cantabria-ficha.jpg';
@@ -67,8 +66,10 @@ import dragonImg from '../assets/best-sellers/escritorios/dragon.png';
 const WHATSAPP_NUMBER = "523332222490"; 
 
 export default function BestSellers() {
+  
     const [activeCategory, setActiveCategory] = useState('Sillas');
     const [activeFicha, setActiveFicha] = useState(null);
+    const carouselRef = useRef(null);
 
     // Cerrar el visor con la tecla ESC
     useEffect(() => {
@@ -76,6 +77,13 @@ export default function BestSellers() {
       window.addEventListener('keydown', onKey);
       return () => window.removeEventListener('keydown', onKey);
     }, []);
+
+    // Al cambiar de categoría, regresar el carrusel al inicio (móvil)
+    useEffect(() => {
+      if (carouselRef.current) {
+        carouselRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }, [activeCategory]);
 
   // Categorías del filtro
   const categories = ['Sillas', 'Ejecutivas', 'Bancos', 'Exterior', 'Sillones', 'Escritorios'];
@@ -206,9 +214,9 @@ export default function BestSellers() {
       ficha: arneFicha,
     },
     {
-      id: 'banco-sencilla',
+      id: 'banco-sensilla',
       category: 'Bancos',
-      name: 'SENCILLA',
+      name: 'SENSILLA',
       price: '1,999.00',
       image: sencillaBancoImg,
       ficha: sencillaBancoFicha,
@@ -258,9 +266,9 @@ export default function BestSellers() {
       ficha: kipaliFicha,
     },
     {
-      id: 'exterior-sencilla',
+      id: 'exterior-sensilla',
       category: 'Exterior',
-      name: 'SENCILLA',
+      name: 'SENSILLA',
       price: '1,599.00',
       image: sencillaExteriorImg,
       ficha: sencillaExteriorFicha,
@@ -365,9 +373,13 @@ export default function BestSellers() {
           </motion.div>
         </div>
 
-        {/* GRID DE PRODUCTOS */}
         {/* GRID / CARRUSEL DE PRODUCTOS */}
-        <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth pb-6 lg:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 custom-scrollbar">
+        <div
+          ref={carouselRef}
+          className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-smooth pb-6 lg:pb-0 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 custom-scrollbar"
+        >
+
+          
           <AnimatePresence mode="popLayout">
             
             {filteredProducts.length > 0 ? (

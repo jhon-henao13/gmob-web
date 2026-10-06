@@ -93,7 +93,7 @@ export default function Hero() {
               className="hidden md:flex flex-row justify-start items-center gap-3 sm:gap-4 pt-2 w-full"
             >
               <motion.a
-                href="https://wa.me/573000000000?text=Hola,%20deseo%20una%20cotización%20personalizada"
+                href="https://wa.me/523332222490?text=Hola,%20deseo%20una%20cotización%20personalizada"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, y: -2 }}
@@ -104,7 +104,9 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="#catalogo"
+                href="https://drive.google.com/file/d/1pGm7OCHcTZw3P6QdJMQU9s2-bKFLk7ye/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.96 }}
                 className="bg-[#6e6c69] hover:bg-gray-700 text-white font-extrabold px-5 py-4 rounded-lg text-center shadow-md transition-all duration-300 font-montserrat text-base tracking-wide"
@@ -147,7 +149,7 @@ export default function Hero() {
           className="flex flex-row justify-center items-center gap-3 w-full"
         >
           <a
-            href="https://wa.me/573000000000?text=Hola,%20deseo%20una%20cotización%20personalizada"
+            href="https://wa.me/523332222490?text=Hola,%20deseo%20una%20cotización%20personalizada"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-gmob-red text-white font-extrabold px-4 py-3.5 rounded-lg text-center shadow-lg transition-all font-montserrat text-sm tracking-wide flex-1"
@@ -156,7 +158,9 @@ export default function Hero() {
           </a>
 
           <a
-            href="#catalogo"
+            href="https://drive.google.com/file/d/1pGm7OCHcTZw3P6QdJMQU9s2-bKFLk7ye/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#6e6c69] text-white font-extrabold px-4 py-3.5 rounded-lg text-center shadow-md transition-all font-montserrat text-sm tracking-wide flex-1"
           >
             Descargar Catálogo

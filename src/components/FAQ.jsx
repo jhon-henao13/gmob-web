@@ -65,7 +65,7 @@ export default function FAQ() {
       id: "07",
       question: "¿Cuánto cuesta el envío fuera de Guadalajara?",
       answer:
-        "Enviamos a toda la República Mexicana mediante paquetería coordinada directamente con el fabricante (OFFIHO), aplicando un cargo logístico aproximado del 5% sobre la compra.",
+        "Envios gratis a toda la republica mexicana mediante paquetería coordinada directamente con el fabricante (OFFIHO)",
       category: "Envíos Nacionales",
     },
   ];
