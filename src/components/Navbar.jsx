@@ -69,7 +69,7 @@ export default function Navbar() {
         {/* CTA BUTTON */}
         <div className="hidden md:flex items-center">
           <motion.a
-            href="https://wa.me/573000000000?text=Hola,%20quiero%20cotizar%20mobiliario%20G%20MOB"
+            href="https://wa.me/3332222490?text=Hola,%20quiero%20cotizar%20mobiliario%20G%20MOB"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
@@ -133,7 +133,7 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="https://wa.me/573000000000?text=Hola,%20quiero%20cotizar%20mobiliario%20G%20MOB"
+                href="https://wa.me/3332222490?text=Hola,%20quiero%20cotizar%20mobiliario%20G%20MOB"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
